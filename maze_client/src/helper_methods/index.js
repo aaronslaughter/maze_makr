@@ -7,9 +7,9 @@ export const generateMaze = (maze) => {
 
     for (let i = 0; i < maze.width; i++) {
       for (let j = 0; j < maze.height; j++) {
-        if (i === 1 && j === 0) {
+        if (i === 0 && j === 1) {
           tempGrid[i].push(true)
-        } else if (i === maze.width - 2 && j === maze.height - 1) {
+        } else if (i === maze.height - 1 && j === maze.width - 2) {
           tempGrid[i].push(true)
         }else if (i === 0 || i === maze.width - 1) {
           tempGrid[i].push(false)
