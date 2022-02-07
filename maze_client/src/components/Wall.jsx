@@ -13,10 +13,10 @@ const Div = styled.div`
   color: black;
   background-color: black;
   outline: 1px solid black;
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
 
   &:hover {
-    background-color: rgb(205,205,205);
+    background-color: rgb(75,75,75);
   }
 `
