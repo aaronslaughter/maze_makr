@@ -1,23 +1,22 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const EmptyCell = () => {
+const Finish = () => {
   return (
-    <Div></Div>
+    <Div>F</Div>
   )
 }
 
-export default EmptyCell;
+export default Finish;
 
 
 const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
-  background-color: white;
+  background-color: green;
   outline: 1px solid black;
   width: 1.5em;
   height: 1.5em;
-
-  &:hover {
-    background-color: rgb(190,190,190);
-  }
 `
