@@ -10,8 +10,8 @@ const MazeEditor = ({maze, setMaze}) => {
 
   const handleClick = (row, col) => {
     // excludes border rows and columns
-    if (row !== 0 && row !== maze.height - 1 &&
-      col !==0 && col !== maze.width - 1) {
+    if (row > 0 && row < maze.height - 1 &&
+      col > 0 && col < maze.width - 1) {
 
       let tempGrid = maze.grid;
       tempGrid[row][col] = tempGrid[row][col] ? false : true
@@ -36,25 +36,24 @@ const MazeEditor = ({maze, setMaze}) => {
   }
 
   return (
-    <Container>
-      {maze.grid.map((row, colIndex) => 
-        <div key={colIndex}>
-          {row.map((column, rowIndex) =>
+    <div>
+      {maze.grid.map((row, rowIndex) => 
+        <Container key={rowIndex}>
+          {row.map((col, colIndex) =>
             <div 
-              key={rowIndex}
-              onMouseDown={() => handleClick(rowIndex, colIndex)}
-            >
+              key={colIndex}
+              onMouseDown={() => handleClick(rowIndex, colIndex)}>
               {renderCell(rowIndex, colIndex)}
             </div>
           )}
-        </div>
+        </Container>
       )}
-    </Container>
+    </div>
   )
 }
 
 export default MazeEditor;
 
 const Container = styled.div`
-  display: flex;
+display: flex;
 `
