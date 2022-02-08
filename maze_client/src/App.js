@@ -7,8 +7,8 @@ import MazeEditor from './components/MazeEditor';
 function App() {
 
   const [maze, setMaze] = useState({
-    width: 15, 
-    height: 15,
+    height: 20, 
+    width: 30,
     grid: []
   })
 
@@ -22,8 +22,7 @@ function App() {
       <Home>
         <MazeEditor
           maze={maze}
-          setMaze={setMaze}
-        >
+          setMaze={setMaze}>
         </MazeEditor>
       </Home>
     </div>
