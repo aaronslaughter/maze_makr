@@ -1,19 +1,19 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import { generateMaze } from './helper_methods';
+import { generateBlankMaze } from './helper_methods';
 import Home from './pages/Home';
 import MazeEditor from './components/MazeEditor';
 
 function App() {
 
   const [maze, setMaze] = useState({
-    height: 20, 
-    width: 30,
+    height: 24, 
+    width: 45,
     grid: []
   })
 
   useEffect(() => {
-    setMaze({...maze, grid: generateMaze(maze)})
+    setMaze({...maze, grid: generateBlankMaze(maze)})
   }, [])
 
   return (
