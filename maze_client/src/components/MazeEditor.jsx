@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components'
+import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods';
 import EmptyCell from './EmptyCell';
 import Wall from './Wall';
 import FixedWall from './FixedWall';
@@ -8,7 +9,7 @@ import Finish from './Finish';
 
 const MazeEditor = ({maze, setMaze}) => {
 
-  const handleClick = (row, col) => {
+  const toggleCell = (row, col) => {
     // excludes border rows and columns
     if (row > 0 && row < maze.height - 1 &&
       col > 0 && col < maze.width - 1) {
@@ -17,6 +18,34 @@ const MazeEditor = ({maze, setMaze}) => {
       tempGrid[row][col] = tempGrid[row][col] ? false : true
       setMaze({...maze, grid: tempGrid})
     }
+  }
+
+  const randomizeMaze = () => {
+    let blankMaze = generateBlankMaze(maze)
+
+    setMaze({...maze, grid: generateMazeRecursiveDivision(
+      blankMaze, 
+      [
+        {
+          row: 0,
+          col: 1
+        },
+        {
+          row: maze.height - 1,
+          col: maze.width - 2
+        }
+      ],
+      {
+        topLeft: {
+          row: 1,
+          col: 1
+        }, 
+        bottomRight: {
+          row: maze.height - 2,
+          col: maze.width - 2
+        }
+      }
+    )})
   }
 
   const renderCell = (row, col) => {
@@ -42,12 +71,13 @@ const MazeEditor = ({maze, setMaze}) => {
           {row.map((col, colIndex) =>
             <div 
               key={colIndex}
-              onMouseDown={() => handleClick(rowIndex, colIndex)}>
+              onMouseDown={() => toggleCell(rowIndex, colIndex)}>
               {renderCell(rowIndex, colIndex)}
             </div>
           )}
         </Container>
       )}
+      <button onClick={randomizeMaze}>Randomize</button>
     </div>
   )
 }
