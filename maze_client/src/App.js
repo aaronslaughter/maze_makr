@@ -10,7 +10,7 @@ import Login from './components/Login'
 
 function App() {
 
-  const [user, setUser] = useState(false)
+  const [user, setUser] = useState(null)
 
   const loginUser = (username) => {
     const login = async () => {
@@ -30,9 +30,9 @@ function App() {
     <div className="App">
       <div>
         <Home>
-          <MazeEditor>
-            {user ? <Load></Load> : <Login loginUser={loginUser}></Login>}
-            {user && <Save></Save>}
+          <MazeEditor
+            user={user}
+            loginUser={loginUser}>
           </MazeEditor>
         </Home>
       </div>
