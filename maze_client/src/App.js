@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Home from './pages/Home';
 import MazeEditor from './components/MazeEditor';
 import Load from './components/Load';
+import Save from './components/Save'
 import Login from './components/Login'
 
 function App() {
@@ -13,12 +14,12 @@ function App() {
 
   const loginUser = (username) => {
     const login = async () => {
-      const response = await axios.get(`${BASE_URL}/users`)
+      const response = await axios.get(`${BASE_URL}/users/`)
       const foundUser = response.data.find((element) => element.username === username)
       if (foundUser) {
         setUser(foundUser)
       } else {
-        await axios.post(`${BASE_URL}/users/`, {username: username, mazes: []})
+        await axios.post(`${BASE_URL}/users/`, {username: username})
       }
     }
     login()
@@ -26,13 +27,15 @@ function App() {
 
 
   return (
-    <div 
-      className="App">
-      <Home>
-        <MazeEditor>
-          {user ? <Load></Load> : <Login loginUser={loginUser}></Login>}
-        </MazeEditor>
-      </Home>
+    <div className="App">
+      <div>
+        <Home>
+          <MazeEditor>
+            {user ? <Load></Load> : <Login loginUser={loginUser}></Login>}
+            {user && <Save></Save>}
+          </MazeEditor>
+        </Home>
+      </div>
     </div>
   );
 }
