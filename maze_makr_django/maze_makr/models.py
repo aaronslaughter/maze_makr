@@ -10,7 +10,7 @@ class User(models.Model):
     return self.username
 
 class Maze(models.Model):
-  user = models.ForeignKey(User, on_delete=models.CASCADE, default='', related_name='mazes', null=True, blank=True)
+  user = models.ForeignKey(User, on_delete=models.CASCADE, default='', related_name='mazes', null=True)
   name = models.CharField(max_length=100)
   height = models.IntegerField(default=3)
   width = models.IntegerField(default=3)
