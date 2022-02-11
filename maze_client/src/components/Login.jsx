@@ -18,18 +18,19 @@ const Login = (props) => {
     e.preventDefault()
 
     props.loginUser(username)
+    toggleOpen(false)
   }
 
   return (
     <div>
-      <Button onClick={() => toggleOpen(true)}>Login
+      <Button variant='brand' onClick={() => toggleOpen(true)}>Login
         <Modal id="modal-1" isOpen={isOpen} onRequestClose={() => toggleOpen(!isOpen)}>
           <Input
             id="input-component-1"
             label="Enter a username"
             placeholder="Username"
             style={containerStyles}
-            valeu={username}
+            value={username}
             className="rainbow-m-vertical_x-large rainbow-p-horizontal_medium rainbow-m_auto"
             onChange={handleChange}/>
           <Button disabled={!username} onClick={handleSubmit}>Submit</Button>
