@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import styled from 'styled-components'
+import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { Button } from 'react-rainbow-components'
+import { BASE_URL } from '../globals';
 import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods/generators';
 import { wallFollower } from '../helper_methods/solvers';
 import EmptyCell from './EmptyCell';
@@ -9,8 +12,18 @@ import Start from './Start';
 import Finish from './Finish';
 import WallFollowerCell from './WallFollowerCell';
 
-const MazeEditor = ({maze, setMaze}) => {
+const initialHeight = 25;
+const initialWidth = 50;
 
+const MazeEditor = ({children}) => {
+
+  const [maze, setMaze] = useState({
+    height: initialHeight, 
+    width: initialWidth,
+    grid: generateBlankMaze(initialHeight, initialWidth)
+  })
+
+  
   const [solved, toggleSolved] = useState(false)
   const [solution, setSolution] = useState(null)
 
@@ -31,7 +44,7 @@ const MazeEditor = ({maze, setMaze}) => {
 
     toggleSolved(false)
     setSolution(null)
-    let blankMaze = generateBlankMaze(maze)
+    let blankMaze = generateBlankMaze(maze.height, maze.width)
 
     setMaze({...maze, grid: generateMazeRecursiveDivision(
       blankMaze, 
@@ -99,19 +112,25 @@ const MazeEditor = ({maze, setMaze}) => {
 
   return (
     <div>
-      {maze.grid.map((row, rowIndex) => 
-        <Container key={rowIndex}>
-          {row.map((col, colIndex) =>
-            <div 
-              key={colIndex}
-              onMouseDown={() => toggleCell(rowIndex, colIndex)}>
-              {renderCell(rowIndex, colIndex)}
-            </div>
-          )}
-        </Container>
-      )}
-      <button onClick={randomizeMaze}>Randomize</button>
-      <button onClick={solveWallFollower}>Wall Follower Solution</button>
+    <FlexButtonContainer>
+      {children}
+      <Button onClick={randomizeMaze}>Randomize</Button>
+      <Button onClick={solveWallFollower}>Wall Follower Solution</Button>
+    </FlexButtonContainer>
+      <div>
+        {maze.grid.map((row, rowIndex) => 
+          <Container key={rowIndex}>
+            {row.map((col, colIndex) =>
+              <div 
+                key={colIndex}
+                onMouseDown={() => toggleCell(rowIndex, colIndex)}>
+                {renderCell(rowIndex, colIndex)}
+              </div>
+            )}
+          </Container>
+        )}
+      </div>
+      
     </div>
   )
 }
@@ -120,4 +139,9 @@ export default MazeEditor;
 
 const Container = styled.div`
 display: flex;
+`
+const FlexButtonContainer = styled.div`
+  display: flex;
+  gap: 1em;
+  margin: 1em;
 `
