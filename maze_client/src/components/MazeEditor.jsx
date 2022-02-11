@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Button } from 'react-rainbow-components'
+import { Button, Modal } from 'react-rainbow-components'
 import { BASE_URL } from '../globals';
 import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods/generators';
 import { wallFollower } from '../helper_methods/solvers';
@@ -11,9 +11,10 @@ import FixedWall from './FixedWall';
 import Start from './Start';
 import Finish from './Finish';
 import WallFollowerCell from './WallFollowerCell';
+import Maze from './Maze'
 
-const initialHeight = 25;
-const initialWidth = 50;
+const initialHeight = 10;
+const initialWidth = 15;
 
 const MazeEditor = ({children}) => {
 
@@ -22,6 +23,8 @@ const MazeEditor = ({children}) => {
     width: initialWidth,
     grid: generateBlankMaze(initialHeight, initialWidth)
   })
+
+  const [blankMazeModal, toggleBlankMazeModal] = useState(false)
 
   
   const [solved, toggleSolved] = useState(false)
@@ -38,6 +41,11 @@ const MazeEditor = ({children}) => {
       tempGrid[row][col] = tempGrid[row][col] ? false : true
       setMaze({...maze, grid: tempGrid})
     }
+  }
+
+  const createBlankMaze = (height, width) => {
+    toggleSolved(false)
+    setMaze({height: height, width: width, grid: generateBlankMaze(height, width)})
   }
 
   const randomizeMaze = () => {
@@ -112,36 +120,44 @@ const MazeEditor = ({children}) => {
 
   return (
     <div>
-    <FlexButtonContainer>
-      {children}
-      <Button onClick={randomizeMaze}>Randomize</Button>
-      <Button onClick={solveWallFollower}>Wall Follower Solution</Button>
-    </FlexButtonContainer>
-      <div>
-        {maze.grid.map((row, rowIndex) => 
-          <Container key={rowIndex}>
-            {row.map((col, colIndex) =>
-              <div 
-                key={colIndex}
-                onMouseDown={() => toggleCell(rowIndex, colIndex)}>
-                {renderCell(rowIndex, colIndex)}
-              </div>
-            )}
-          </Container>
-        )}
-      </div>
-      
+      <FlexButtonContainer>
+        {children}
+      </FlexButtonContainer>
+      <FlexButtonContainer>
+        <Button variant='brand' onClick={() => toggleBlankMazeModal(true)}>Create Blank Maze
+          <Modal id="modal-1" title='Choose a size' isOpen={blankMazeModal} onRequestClose={() => toggleBlankMazeModal(false)}>
+            <FlexButtonContainer>
+              <Button label='10x15' onClick={() => createBlankMaze(10, 15)}></Button>
+              <Button label='20x30' onClick={() => createBlankMaze(20, 30)}></Button>
+              <Button label='30x60' onClick={() => createBlankMaze(30, 60)}></Button>
+            </FlexButtonContainer>
+          </Modal>
+        </Button>
+        {maze && <Button variant='brand' onClick={randomizeMaze}>Randomize</Button>}
+        {maze && <Button variant='brand' onClick={solveWallFollower}>Wall Follower Solution</Button>}
+      </FlexButtonContainer>
+      <MazeContainer>
+        <Maze
+          maze={maze}
+          toggleCell={toggleCell}
+          renderCell={renderCell}>
+        </Maze>
+      </MazeContainer>
     </div>
   )
 }
 
 export default MazeEditor;
 
-const Container = styled.div`
-display: flex;
-`
+
 const FlexButtonContainer = styled.div`
   display: flex;
+  justify-content: center;
   gap: 1em;
   margin: 1em;
+`
+
+const MazeContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `
