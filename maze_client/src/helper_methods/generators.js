@@ -1,22 +1,22 @@
-export const generateBlankMaze = (maze) => {
+export const generateBlankMaze = (height, width) => {
   let tempGrid = []
 
-  for (let i = 0; i < maze.height; i++) {
+  for (let i = 0; i < height; i++) {
     tempGrid.push([])
-    for (let j = 0; j < maze.width; j++) {
+    for (let j = 0; j < width; j++) {
       tempGrid[i].push([])
     }
   }
 
-  for (let i = 0; i < maze.height; i++) {
-    for (let j = 0; j < maze.width; j++) {
+  for (let i = 0; i < height; i++) {
+    for (let j = 0; j < width; j++) {
       if (i === 0 && j === 1) {
         tempGrid[i][j] = true
-      } else if (i === maze.height - 1 && j === maze.width - 2) {
+      } else if (i === height - 1 && j === width - 2) {
         tempGrid[i][j] = true
-      } else if (i === 0 || i === maze.height - 1) {
+      } else if (i === 0 || i === height - 1) {
         tempGrid[i][j] = false
-      } else if (j === 0 || j === maze.width - 1) {
+      } else if (j === 0 || j === width - 1) {
         tempGrid[i][j] = false
       } else {
         tempGrid[i][j] = true

@@ -1,30 +1,41 @@
 import './App.css';
-import { useState, useEffect } from 'react';
-import { generateBlankMaze } from './helper_methods/generators';
+import axios from 'axios'
+import {BASE_URL} from './globals'
+import { useState } from 'react';
 import Home from './pages/Home';
 import MazeEditor from './components/MazeEditor';
+import Load from './components/Load';
+import Save from './components/Save'
+import Login from './components/Login'
 
 function App() {
 
-  const [maze, setMaze] = useState({
-    height: 25, 
-    width: 50,
-    grid: []
-  })
+  const [user, setUser] = useState(null)
 
-  useEffect(() => {
-    setMaze({...maze, grid: generateBlankMaze(maze)})
-  }, [])
+  const loginUser = (username) => {
+    const login = async () => {
+      const response = await axios.get(`${BASE_URL}/users/`)
+      const foundUser = response.data.find((element) => element.username === username)
+      if (foundUser) {
+        setUser(foundUser)
+      } else {
+        await axios.post(`${BASE_URL}/users/`, {username: username})
+      }
+    }
+    login()
+  }
+
 
   return (
-    <div 
-      className="App">
-      <Home>
-        <MazeEditor
-          maze={maze}
-          setMaze={setMaze}>
-        </MazeEditor>
-      </Home>
+    <div className="App">
+      <div>
+        <Home>
+          <MazeEditor
+            user={user}
+            loginUser={loginUser}>
+          </MazeEditor>
+        </Home>
+      </div>
     </div>
   );
 }
