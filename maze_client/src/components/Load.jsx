@@ -30,6 +30,7 @@ const Load = () => {
                     id="button-1"
                     className="rainbow-m-around_medium"
                     label="Load Maze"
+                    variant="success"
                     onClick={() => handleDrawerOpen()}/>
             </div>
         </div>
