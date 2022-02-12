@@ -1,0 +1,21 @@
+{
+  "name": "maze_makr",
+  "version": "1.0.0",
+  "description": "#### [GitHub](https://github.com/aaronslaughter) | [LinkedIn](https://www.linkedin.com/in/aaron-slaughter1/) ***",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd maze_client && rm -rf build && npm install && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaronslaughter/maze_makr.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaronslaughter/maze_makr/issues"
+  },
+  "homepage": "https://github.com/aaronslaughter/maze_makr#readme"
+}
