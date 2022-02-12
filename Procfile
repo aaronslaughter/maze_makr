@@ -1,1 +1,1 @@
-web: gunicorn maze_makr_django/maze_makr_django.wsgi
+web: gunicorn maze_makr_django.wsgi
