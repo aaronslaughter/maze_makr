@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Modal, Chip } from 'react-rainbow-components'
 import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods/generators';
