@@ -9,5 +9,3 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(`${__dirname}/client/build/index.html`))
   })
 }
-
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
