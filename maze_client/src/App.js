@@ -4,6 +4,7 @@ import {BASE_URL} from './globals'
 import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import MazeEditor from './components/MazeEditor';
+import Footer from './components/Footer'
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
             user={user}
             loginUser={loginUser}>
           </MazeEditor>
+          <Footer/>
         </Home>
       </div>
     </div>
