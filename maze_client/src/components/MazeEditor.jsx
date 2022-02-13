@@ -3,12 +3,12 @@ import styled from 'styled-components';
 import { Button, Modal, Chip } from 'react-rainbow-components'
 import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods/generators';
 import { wallFollower } from '../helper_methods/solvers';
-import EmptyCell from './EmptyCell';
-import Wall from './Wall';
-import FixedWall from './FixedWall';
-import Start from './Start';
-import Finish from './Finish';
-import WallFollowerCell from './WallFollowerCell';
+import EmptyCell from './cells/EmptyCell';
+import Wall from './cells/Wall';
+import FixedWall from './cells/FixedWall';
+import Start from './cells/Start';
+import Finish from './cells/Finish';
+import WallFollowerCell from './cells/WallFollowerCell';
 import Maze from './Maze';
 import Save from './Save';
 import Load from './Load';
