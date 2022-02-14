@@ -4,7 +4,7 @@ import { Button, Drawer, Modal, Input } from 'react-rainbow-components'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
 
-const Load = ({user, setMaze}) => {
+const Load = ({user, setMaze, toggleSolved}) => {
 
   const containerStyles = {
     maxWidth: 300,
@@ -49,6 +49,7 @@ const Load = ({user, setMaze}) => {
     }
 
     setMaze({height: height, width: width, grid: squaredGrid})
+    toggleSolved(false)
   }
 
   const deleteMaze = (id) => {
