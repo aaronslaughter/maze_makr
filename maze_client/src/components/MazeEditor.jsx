@@ -138,7 +138,7 @@ const MazeEditor = ({user, loginUser}) => {
     <div>
       <FlexButtonContainer>
         {user && <Chip label={'Welcome, ' + user.username} variant='base' size='large'></Chip>}
-        {user ? <Load user={user} setMaze={setMaze}></Load> : <Login loginUser={loginUser}></Login>}
+        {user ? <Load user={user} setMaze={setMaze} toggleSolved={toggleSolved}></Load> : <Login loginUser={loginUser}></Login>}
         {user && <Save user={user} maze={maze}></Save>}
       </FlexButtonContainer>
       <FlexButtonContainer>
