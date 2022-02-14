@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button, Modal, Chip } from 'react-rainbow-components'
 import { generateBlankMaze, generateMazeRecursiveDivision } from '../helper_methods/generators';
 import { wallFollower } from '../helper_methods/solvers';
-import EmptyCell from './EmptyCell';
-import Wall from './Wall';
-import FixedWall from './FixedWall';
-import Start from './Start';
-import Finish from './Finish';
-import WallFollowerCell from './WallFollowerCell';
+import EmptyCell from './cells/EmptyCell';
+import Wall from './cells/Wall';
+import FixedWall from './cells/FixedWall';
+import Start from './cells/Start';
+import Finish from './cells/Finish';
+import WallFollowerCell from './cells/WallFollowerCell';
 import Maze from './Maze';
 import Save from './Save';
 import Load from './Load';
@@ -24,6 +24,22 @@ const MazeEditor = ({user, loginUser}) => {
     width: initialWidth,
     grid: generateBlankMaze(initialHeight, initialWidth)
   })
+
+  let fontSize
+
+  if (maze.width > 50) {
+    fontSize = '.8'
+  } else if (maze.width > 20) {
+    fontSize = '1.3'
+  } else {
+    fontSize = '2.5'
+  }
+
+  const mazeContainerStyle = {
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: fontSize + 'vw'
+  }  
 
   const [isOpen, toggleIsOpen] = useState(false)
 
@@ -137,13 +153,13 @@ const MazeEditor = ({user, loginUser}) => {
         {maze && <Button variant='brand' onClick={randomizeMaze}>Randomize</Button>}
         {maze && <Button variant='brand' onClick={solveWallFollower}>Wall Follower Solution</Button>}
       </FlexButtonContainer>
-      <MazeContainer>
+      <div style={mazeContainerStyle}>
         <Maze
           maze={maze}
           toggleCell={toggleCell}
           renderCell={renderCell}>
         </Maze>
-      </MazeContainer>
+      </div>
     </div>
   )
 }
@@ -156,9 +172,9 @@ const FlexButtonContainer = styled.div`
   justify-content: center;
   gap: 1em;
   margin: 1em;
-`
 
-const MazeContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  @media only screen and (max-width: 40em) {
+    flex-direction: column;
+    align-items: center;
+  }
 `

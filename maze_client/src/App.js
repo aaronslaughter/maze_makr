@@ -1,16 +1,23 @@
 import './App.css';
 import axios from 'axios'
 import {BASE_URL} from './globals'
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import MazeEditor from './components/MazeEditor';
-import Load from './components/Load';
-import Save from './components/Save'
-import Login from './components/Login'
+import Footer from './components/Footer'
 
 function App() {
 
   const [user, setUser] = useState(null)
+
+
+  // makes a call to the api to wake up Heroku app which is likely asleep.
+  useEffect(() => {
+    const spinUpDb = async () => {
+      await axios.get(`${BASE_URL}/users/`)
+    }
+    spinUpDb()
+  }, [])
 
   const loginUser = (username) => {
     const login = async () => {
@@ -34,6 +41,7 @@ function App() {
             user={user}
             loginUser={loginUser}>
           </MazeEditor>
+          <Footer/>
         </Home>
       </div>
     </div>
