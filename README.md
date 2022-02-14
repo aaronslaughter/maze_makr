@@ -21,11 +21,12 @@
 * Heroku
 
 ### Getting Started:
-* install Python, Node, and pipenv, and Django
+* install Python, Node, pipenv, Django, and Postgres
 * Fork and clone
 * pipenv shell
 * cd maze_makr_django && pipenv install
-* python manage.py migrate && python manage.py runserver
+* python manage.py migrate && python manage.py createsuperuser
+* python manage.py runserver
 * cd maze_makr_client && npm install && npm start
 
 ### Or visit - [mazemakr.herokuapp.com](https://mazemakr.herokuapp.com/)
