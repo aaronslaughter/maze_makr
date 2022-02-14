@@ -145,9 +145,9 @@ const MazeEditor = ({user, loginUser}) => {
         <Button variant='brand' onClick={() => toggleIsOpen(true)}>Create Blank Maze</Button>
         <Modal id="modal-1" title='Choose a size' isOpen={isOpen} onRequestClose={() => toggleIsOpen(!isOpen)}>
           <FlexButtonContainer>
-            <Button label='10x15' onClick={() => createBlankMaze(10, 15)}></Button>
-            <Button label='20x30' onClick={() => createBlankMaze(20, 30)}></Button>
-            <Button label='30x60' onClick={() => createBlankMaze(30, 60)}></Button>
+            <Button variant='brand' label='10x15' onClick={() => createBlankMaze(10, 15)}></Button>
+            <Button variant='brand' label='20x30' onClick={() => createBlankMaze(20, 30)}></Button>
+            <Button variant='brand' label='30x60' onClick={() => createBlankMaze(30, 60)}></Button>
           </FlexButtonContainer>
         </Modal>
         {maze && <Button variant='brand' onClick={randomizeMaze}>Randomize</Button>}
