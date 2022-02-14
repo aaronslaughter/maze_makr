@@ -22,62 +22,62 @@ const Div = styled.div`
   }
 
   &.north {
-    box-shadow: inset 0px .4em 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue;
   }
 
   &.northeast {
-    box-shadow: inset 0px .4em 3px 0px blue, inset -.4em 0px 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset -.4em 0px 2px 0px blue;
   }
 
   &.northsouth {
-    box-shadow: inset 0px .4em 3px 0px blue, inset 0px -.4em 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset 0px -.4em 2px 0px blue;
   }
 
   &.northwest {
-    box-shadow: inset 0px .4em 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.northeastsouth {
-    box-shadow: inset 0px .4em 3px 0px blue, inset -.4em 0px 3px 0px blue, inset 0px -.4em 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset -.4em 0px 2px 0px blue, inset 0px -.4em 2px 0px blue;
   }
 
   &.northeastwest {
-    box-shadow: inset 0px .4em 3px 0px blue, inset -.4em 0px 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset -.4em 0px 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.northsouthwest {
-    box-shadow: inset 0px .4em 3px 0px blue, inset 0px -.4em 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset 0px -.4em 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.northeastsouthwest {
-    box-shadow: inset 0px .4em 3px 0px blue, inset -.4em 0px 3px 0px blue, inset 0px -.4em 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset 0px .4em 2px 0px blue, inset -.4em 0px 2px 0px blue, inset 0px -.4em 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.east {
-    box-shadow: inset -.4em 0px 3px 0px blue;
+    box-shadow: inset -.4em 0px 2px 0px blue;
   }
 
   &.eastsouth {
-    box-shadow: inset -.4em 0px 3px 0px blue, inset 0px -.4em 3px 0px blue;
+    box-shadow: inset -.4em 0px 2px 0px blue, inset 0px -.4em 2px 0px blue;
   }
 
   &.eastwest {
-    box-shadow: inset -.4em 0px 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset -.4em 0px 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.eastsouthwest {
-    box-shadow: inset -.4em 0px 3px 0px blue, inset 0px -.4em 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset -.4em 0px 2px 0px blue, inset 0px -.4em 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.south {
-    box-shadow: inset 0px -.4em 3px 0px blue;
+    box-shadow: inset 0px -.4em 2px 0px blue;
   }
 
   &.southwest {
-    box-shadow: inset 0px -.4em 3px 0px blue, inset .4em 0px 3px 0px blue;
+    box-shadow: inset 0px -.4em 2px 0px blue, inset .4em 0px 2px 0px blue;
   }
 
   &.west {
-    box-shadow: inset .4em 0px 3px 0px blue;
+    box-shadow: inset .4em 0px 2px 0px blue;
   }
 `
